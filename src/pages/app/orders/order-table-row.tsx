@@ -102,11 +102,7 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
         {order.orderId}
       </TableCell>
       <TableCell className="text-muted-foreground">
-        {/* {formatDistanceToNow(order.createdAt, {
-          locale: ptBR,
-          addSuffix: true,
-        })} */}
-        {formatDistanceToNow(new Date(), {
+        {formatDistanceToNow(order.createdAt, {
           locale: ptBR,
           addSuffix: true,
         })}
