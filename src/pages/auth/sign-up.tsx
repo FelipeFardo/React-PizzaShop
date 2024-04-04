@@ -6,12 +6,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
-import { registerRestaurante } from '@/api/register-restaurante'
+import { registerRestaurant } from '@/api/register-restaurant'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
 const signUpForm = z.object({
-  restauranteName: z.string(),
+  restaurantName: z.string(),
   managerName: z.string(),
   phone: z.string(),
   email: z.string().email(),
@@ -28,17 +28,17 @@ export function SignUp() {
     formState: { isSubmitting },
   } = useForm<SignUpForm>()
 
-  const { mutateAsync: registerRestauranteFn } = useMutation({
-    mutationFn: registerRestaurante,
+  const { mutateAsync: registerRestaurantFn } = useMutation({
+    mutationFn: registerRestaurant,
   })
 
   async function handleSign(data: SignUpForm) {
     try {
-      registerRestauranteFn({
+      await registerRestaurantFn({
         email: data.email,
         managerName: data.managerName,
         phone: data.phone,
-        restauranteName: data.restauranteName,
+        restaurantName: data.restaurantName,
       })
 
       toast.success('Restaurante cadastrado com sucesso!', {
@@ -70,11 +70,11 @@ export function SignUp() {
           </div>
           <form className="space-y-4" onSubmit={handleSubmit(handleSign)}>
             <div className="space-y-2">
-              <Label htmlFor="restauranteName">Nome do estabelecimento</Label>
+              <Label htmlFor="restaurantName">Nome do estabelecimento</Label>
               <Input
-                id="restauranteName"
+                id="restaurantName"
                 type="text"
-                {...register('restauranteName')}
+                {...register('restaurantName')}
               />
             </div>
             <div className="space-y-2">

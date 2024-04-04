@@ -7,7 +7,7 @@ import { z } from 'zod'
 import {
   getManagedRestaurant,
   GetManagedRestaurantResponse,
-} from '@/api/get-manager-restaurante'
+} from '@/api/get-manager-restaurant'
 import { updateProfile } from '@/api/update-profile'
 
 import { Button } from './ui/button'
@@ -33,8 +33,8 @@ type StoreProfileSchema = z.infer<typeof storeProfileSchema>
 export function StoreProfileDialog() {
   const queryClient = useQueryClient()
 
-  const { data: managerRestaurante } = useQuery({
-    queryKey: ['manager-restaurante'],
+  const { data: managerRestaurant } = useQuery({
+    queryKey: ['manager-restaurant'],
     queryFn: getManagedRestaurant,
     staleTime: Infinity,
   })
@@ -46,8 +46,8 @@ export function StoreProfileDialog() {
   } = useForm<StoreProfileSchema>({
     resolver: zodResolver(storeProfileSchema),
     values: {
-      name: managerRestaurante?.name ?? '',
-      description: managerRestaurante?.description ?? '',
+      name: managerRestaurant?.name ?? '',
+      description: managerRestaurant?.description ?? '',
     },
   })
 
@@ -56,11 +56,11 @@ export function StoreProfileDialog() {
     description,
   }: StoreProfileSchema) {
     const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
-      'manager-restaurante',
+      'manager-restaurant',
     ])
     if (cached) {
       queryClient.setQueryData<GetManagedRestaurantResponse>(
-        ['manager-restaurante'],
+        ['manager-restaurant'],
         {
           ...cached,
           name,
