@@ -41,14 +41,14 @@ export function SignUp() {
         restaurantName: data.restaurantName,
       })
 
-      toast.success('Restaurante cadastrado com sucesso!', {
+      toast.success('Restaurante cadastrado com sucesso', {
         action: {
           label: 'Login',
           onClick: () => navigate(`/sign-in?email=${data.email}`),
         },
       })
     } catch (error) {
-      toast.error('Error ao cadastrar restaurante.')
+      toast.error('Erro ao cadastrar restaurante.')
     }
   }
 
@@ -91,7 +91,7 @@ export function SignUp() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone">Seu ceular</Label>
+              <Label htmlFor="phone">Seu celular</Label>
               <Input id="phone" type="tel" {...register('phone')} />
             </div>
             <Button className="w-full" type="submit" disabled={isSubmitting}>
