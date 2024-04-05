@@ -32,7 +32,7 @@ export function SignUp() {
     mutationFn: registerRestaurant,
   })
 
-  async function handleSign(data: SignUpForm) {
+  async function handleSignUp(data: SignUpForm) {
     try {
       await registerRestaurantFn({
         email: data.email,
@@ -68,7 +68,7 @@ export function SignUp() {
               Seja um parceiro e comece suas vendas
             </p>
           </div>
-          <form className="space-y-4" onSubmit={handleSubmit(handleSign)}>
+          <form className="space-y-4" onSubmit={handleSubmit(handleSignUp)}>
             <div className="space-y-2">
               <Label htmlFor="restaurantName">Nome do estabelecimento</Label>
               <Input
