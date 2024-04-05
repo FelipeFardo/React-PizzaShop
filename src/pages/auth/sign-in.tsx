@@ -32,14 +32,14 @@ export function SignIn() {
     mutationFn: signIn,
   })
 
-  async function handleSign(data: SignInForm) {
+  async function handleSignIn(data: SignInForm) {
     try {
       await authenticate({ email: data.email })
 
-      toast.success('Enviamos um link de autenticação para seu-email.', {
+      toast.success('Enviamos um link de autenticação para seu e-mail.', {
         action: {
           label: 'Reenviar',
-          onClick: () => handleSign(data),
+          onClick: () => handleSignIn(data),
         },
       })
     } catch (error) {
@@ -63,7 +63,7 @@ export function SignIn() {
               Acompanhe suas vendas pelo painel do parceiro
             </p>
           </div>
-          <form className="space-y-4" onSubmit={handleSubmit(handleSign)}>
+          <form className="space-y-4" onSubmit={handleSubmit(handleSignIn)}>
             <div className="space-y-2">
               <Label htmlFor="email">Seu e-mail</Label>
               <Input id="email" type="email" {...register('email')} />
