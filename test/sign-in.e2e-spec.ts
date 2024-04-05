@@ -11,7 +11,7 @@ test('sign in successfully', async ({ page }) => {
     'Enviamos um link de autenticação para o seu e-mail.',
   )
 
-  expect(toast).toBeVisible()
+  await expect(toast).toBeVisible()
 })
 
 test('sign in with wrong credentials', async ({ page }) => {
@@ -23,7 +23,7 @@ test('sign in with wrong credentials', async ({ page }) => {
 
   const toast = page.getByText('Credenciais inválidas')
 
-  expect(toast).toBeVisible()
+  await expect(toast).toBeVisible()
 })
 
 test('navigate to new restaurant page', async ({ page }) => {
@@ -31,5 +31,5 @@ test('navigate to new restaurant page', async ({ page }) => {
 
   await page.getByRole('link', { name: 'Novo Estabelecimento' }).click()
 
-  expect(page.url()).toContain('sign-up')
+  await expect(page.url()).toContain('sign-up')
 })
