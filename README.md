@@ -37,19 +37,19 @@ This project was developed with the following technologies:
 
 ## 🖲️ Getting Started
  ```sh
-  - git clone https://github.com/FelipeFardo/React-PizzaShop.git
+git clone https://github.com/FelipeFardo/React-PizzaShop.git
   ```
  - Install the dependencies using node:
  ```sh
-  - npm install 
+ npm install 
   ```
   - Start project
  ```sh
-  - npm run dev 
+npm run dev 
   ```
   - Run Tests
  ```sh
-  - npm run dev:test
+npm run dev:test
   ```
 
 
